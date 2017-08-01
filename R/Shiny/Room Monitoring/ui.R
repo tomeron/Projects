@@ -1,11 +1,8 @@
 
 ## load libraries
 library(shiny)
-library(ggplot2)
 library(shinythemes)
 library(dplyr)
-library(RMySQL)
-library(plotly)
 library(dygraphs)
 library(xts)
 library(shinydashboard)

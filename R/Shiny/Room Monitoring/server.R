@@ -1,27 +1,14 @@
+
+## load libraries
 library(shiny)
-library(ggplot2)
 library(dplyr)
-library(gridExtra)
-library(data.table)
 library(reshape2)
-library(ggrepel)
 library(dygraphs)
 library(xts)
 library(shinythemes)
-library(RMySQL)
-
-
 
 function(input, output, session) {
-    
-    ## load libraries
-    library(shiny)
-    library(ggplot2)
-    library(shinythemes)
-    library(dplyr)
-    library(RMySQL)
-    
-    
+
     ## generate data
     dates <- rep(seq(Sys.Date()-60,length.out = 60,by='day'),27)
     avg_co2 <- rnorm(60*27,700,150)
@@ -47,13 +34,6 @@ function(input, output, session) {
                     ,label='Choose room'
                     ,choices = as.character(unique(data[data$building==input$building,"room"])))
     })
-    
-    # greening_date <- reactive({
-    #     
-    #     tmp <- rooms %>% filter(room==input$room) %>% select(greening_date) %>% mutate(greening_date=as.Date(greening_date,'%Y-%m-%d'))
-    #     
-    # }) 
-    # 
     
     raw_data <- reactive({
         
